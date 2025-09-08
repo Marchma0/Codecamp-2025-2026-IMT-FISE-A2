@@ -6,20 +6,46 @@ def add_task(filename, description):
     print(f"Tâche ajoutée : {description} (dans {filename})")
     # à compléter
 
+
 def modify_task(filename, task_id, new_description):
-    print(f"Tâche {task_id} modifiée : {new_description} (dans {filename})")
-    # à compléter
+    modified = False
+    lines = []
+
+    with open(filename, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split(";", 1)  
+            if parts[0] == str(task_id):
+                lines.append(f"{task_id};{new_description}\n")
+                modified = True
+            else:
+                lines.append(line + "\n")
+
+    if modified:
+        with open(filename, "w", encoding="utf-8") as f:
+            f.writelines(lines)
+        print(f"Tâche {task_id} modifiée avec succès.")
+        return True
+    else:
+        print(f"Erreur : tâche {task_id} non trouvée.")
+        return False
+       
 
 def remove_task(filename, task_id):
     print(f"Tâche {task_id} supprimée (dans {filename})")
     # à compléter
 
 def show_tasks(filename):
-    """ montre la liste des taches a effectuer avec leurs id
-    input : File path (str)
-    output : liste des taches 
+    """ 
+        Montre la liste des taches a effectuer avec leurs id
+        input  : File path (str)
+        output : liste des taches 
     """
-    print(f"Affichage des tâches contenues dans {filename}")
+
+    print(f"Affichage des tâches contenues dans {filename}... \n \n")
+
     toShow = ""
     with open(filename, 'r') as file:
         toShow += f"+{"":-^5}+{"":-^10}+\n"
@@ -27,7 +53,9 @@ def show_tasks(filename):
             line_id,content  = line.split("    ", 1)
             toShow += f"|{line_id:^5} | {content:^len(content)} |"
             toShow += f"+{"":-^5}+{"":-^10}+\n"
+
     print(toShow)
+
     return toShow
 
 
