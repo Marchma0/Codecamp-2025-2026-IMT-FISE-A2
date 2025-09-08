@@ -6,6 +6,36 @@ def add_task(filename, description):
     print(f"Tâche ajoutée : {description} (dans {filename})")
     # à compléter
 
+def add(filename,description):
+    try:
+       with open (filename,'r') as f:
+        lines=f.readlines()
+    except FileNotFoundError:
+        lines=[]
+    if len(lines)>1:
+        id=lines[-1].split()[0].strip
+        id=int(id)
+    else :
+        id=0
+    id =id+1
+    with open(filename,'a') as f :
+        f.write(f"{id}  {description}" +'\n')
+    return id
+
+        
+    
+    
+
+
+
+
+
+
+
+
+
+
+
 
 def modify_task(filename, task_id, new_description):
     modified = False
