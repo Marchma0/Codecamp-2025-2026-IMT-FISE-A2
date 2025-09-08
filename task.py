@@ -4,9 +4,6 @@ import sys
 
 def add_task(filename, description):
     print(f"Tâche ajoutée : {description} (dans {filename})")
-    # à compléter
-
-def add(filename,description):
     try:
        with open (filename,'r') as f:
         lines=f.readlines()
@@ -21,19 +18,6 @@ def add(filename,description):
     with open(filename,'a') as f :
         f.write(f"{id}  {description}" +'\n')
     return id
-
-        
-    
-    
-
-
-
-
-
-
-
-
-
 
 
 
