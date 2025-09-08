@@ -15,8 +15,21 @@ def remove_task(filename, task_id):
     # à compléter
 
 def show_tasks(filename):
+    """ montre la liste des taches a effectuer avec leurs id
+    input : File path (str)
+    output : liste des taches 
+    """
     print(f"Affichage des tâches contenues dans {filename}")
-    # à compléter
+    toShow = ""
+    with open(filename, 'r') as file:
+        toShow += f"+{"":-^5}+{"":-^10}+\n"
+        for line in file:
+            line_id,content  = line.split("    ", 1)
+            toShow += f"|{line_id:^5} | {content:^len(content)} |"
+            toShow += f"+{"":-^5}+{"":-^10}+\n"
+    print(toShow)
+    return toShow
+
 
 
 
