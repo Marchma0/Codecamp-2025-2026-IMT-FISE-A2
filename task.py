@@ -86,7 +86,7 @@ def delete (id: int, filename) -> str:
     with open(filename, 'r') as file:
         lines = file.readlines()
         for l in lines:
-            if l.strip().split()[0] == str(id):
+            if l.strip().split('    ')[0] == str(id):
                 lines.remove(l)
                 with open(filename, 'w') as file:
                     file.writelines(lines)
