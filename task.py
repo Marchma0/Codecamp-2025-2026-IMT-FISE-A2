@@ -58,26 +58,31 @@ def remove_task(filename, task_id):
     # à compléter
 
 def show_tasks(filename):
-    """ 
-        Montre la liste des taches a effectuer avec leurs id
-        input  : File path (str)
-        output : liste des taches 
+    """ montre la liste des taches a effectuer avec leurs id
+    input : File path (str)
+    output : liste des taches 
     """
-
-    print(f"Affichage des tâches contenues dans {filename}... \n \n")
-
+    print(f"Affichage des tâches contenues dans {filename}")
     toShow = ""
     with open(filename, 'r') as file:
-        toShow += f"+{'':-^5}+{'':-^10}+\n"
+        toShow += f"+{'':-^5}+{'':-^100}+\n"
         for line in file:
             line_id,content  = line.split("    ", 1)
-            toShow += f"|{line_id:^5} | {content:^len(content)} |"
-            toShow += f"+{'':-^5}+{'':-^10}+\n"
+            if len(content) <= 100 :
+                toShow += f"|{line_id:^5} | {content:^100} |"
+            else : 
+                nb_retour_ligne = content//100
+                mid_line = nb_retour_ligne//2
 
+                for i in range(nb_retour_ligne):
+                    if i == mid_line : 
+                        toShow += f"|{line_id:^5} | {content[i:i+100]:^100} |"
+                    else : 
+                        toShow += f"|{line_id:^5} | {content[i:i+100]:^100} |"
+                toShow += f"|{line_id:^5} | {content[nb_retour_ligne*100:]:^100} |"
+            toShow += f"+{'':-^5}+{'':-^100}+\n"
     print(toShow)
-
     return toShow
-
 
 def delete (id: int, filename) -> str:
     with open(filename, 'r') as file:
