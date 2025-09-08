@@ -11,20 +11,18 @@ def add_task(filename, description):
         lines = []
 
     if len(lines) > 1:   
-        id = lines[-1].split()[0].strip()
-        new_id = int(id)
+        id_1 = lines[-1].split()[0].strip()
+        new_id = int(id_1)
     else:
         new_id = 0
 
-    new_id = new_id + 1
+    new_id = int(id(description))
 
     with open(filename, 'a') as f:
         f.write(f"{new_id}  {description}\n")
 
     print("Nouvel ID :", new_id)
     return new_id
-
-
 
 
 def modify_task(filename, task_id, new_description):
