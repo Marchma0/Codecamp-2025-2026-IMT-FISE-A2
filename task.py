@@ -5,19 +5,25 @@ import sys
 def add_task(filename, description):
     print(f"Tâche ajoutée : {description} (dans {filename})")
     try:
-       with open (filename,'r') as f:
-        lines=f.readlines()
+        with open(filename, 'r') as f:
+            lines = f.readlines()
     except FileNotFoundError:
-        lines=[]
-    if len(lines)>1:
-        id=lines[-1].split()[0].strip()
-        id=int(id)
-    else :
-        id=0
-    id =id+1
-    with open(filename,'a') as f :
-        f.write(f"{id}  {description}" +'\n')
-    return id
+        lines = []
+
+    if len(lines) > 1:   
+        id = lines[-1].split()[0].strip()
+        new_id = int(id)
+    else:
+        new_id = 0
+
+    new_id = new_id + 1
+
+    with open(filename, 'a') as f:
+        f.write(f"{new_id}  {description}\n")
+
+    print("Nouvel ID :", new_id)
+    return new_id
+
 
 
 
