@@ -82,9 +82,10 @@ def delete (id: int, filename) -> str:
                 with open(filename, 'w') as file:
                     file.writelines(lines)
                 print ("Deleted")
-            else:
-                print ("ID not found")
-
+                break
+        else:
+            print ("Not found")
+            
 
 
 
