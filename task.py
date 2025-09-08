@@ -10,7 +10,7 @@ def add_task(filename, description):
     except FileNotFoundError:
         lines=[]
     if len(lines)>1:
-        id=lines[-1].split()[0].strip
+        id=lines[-1].split()[0].strip()
         id=int(id)
     else :
         id=0
