@@ -63,24 +63,26 @@ def show_tasks(filename):
     print(f"Affichage des tâches contenues dans {filename}")
     toShow = ""
     with open(filename, 'r') as file:
-        toShow += f"+{'':-^5}+{'':-^100}+\n"
+        toShow += f"+{'':-^17}+{'':-^52}+\n"
         for line in file:
-            line_id,content  = line.split("    ", 1)
-            if len(content) <= 100 :
-                toShow += f"|{line_id:^5} | {content:^100} |"
+            line = line.strip()
+            line_id,content  = line.split("\t", 1)
+            if len(content) <= 50 :
+                toShow += f"|{line_id:^16} | {content:^50} |\n"
             else : 
-                nb_retour_ligne = content//100
+                nb_retour_ligne = len(content)//50
                 mid_line = nb_retour_ligne//2
 
                 for i in range(nb_retour_ligne):
                     if i == mid_line : 
-                        toShow += f"|{line_id:^5} | {content[i:i+100]:^100} |"
+                        toShow += f"|{line_id:^16} | {content[i*50:i*50+50]:^50} |\n"
                     else : 
-                        toShow += f"|{line_id:^5} | {content[i:i+100]:^100} |"
-                toShow += f"|{line_id:^5} | {content[nb_retour_ligne*100:]:^100} |"
-            toShow += f"+{'':-^5}+{'':-^100}+\n"
+                        toShow += f"|{"":^16} | {content[i*50:i*50+50]:^50} |\n"
+                toShow += f"|{"":^16} | {content[nb_retour_ligne*50:]:^50} |\n"
+            toShow += f"+{'':-<17}+{'':-<52}+\n"
     print(toShow)
     return toShow
+
 
 def delete (id: int, filename) -> str:
     with open(filename, 'r') as file:
