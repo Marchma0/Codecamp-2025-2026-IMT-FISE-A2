@@ -7,8 +7,6 @@ L'objectif est de développer, en groupe, un logiciel de gestion de tâches simp
 L’utilisateur peut ajouter, modifier, supprimer et afficher des tâches sauvegardées dans un fichier texte.
 
 
-##lien live share 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?6CA9E55E0BE52198A41B41BB0AD801E4D963
 ---
 
 ## Règles du projet
@@ -26,17 +24,27 @@ Le programme `task` permet les actions suivantes :
 
 ### Ajouter une tâche
 Ajoute au fichier lestaches.txt la ligne de la tâche, retourne son identifiant
+```bash
+python src/main.py tests/lestaches.txt add --description <DESCRIPTION> --project <NOM PROJET>
+```
+
 ### Modifier une tâche 
 Remplace la description de la tâche d’identifiant id dans lestaches.txt, renvoie un message d’erreur si la tâche n’est pas trouvée
+```bash
+python src/main.py tests/lestaches.txt modify <ID> --description <NEW DESCRIPTION> --project <NEW PROJECT NAME>
+```
 ### Supprimer une tâche
 Retire la ligne du fichier lestaches.txt contenant la tâche d’identifiant id, renvoie un message d’erreur si la tâche n’est pas trouvée
+```bash 
+python src/main.py tests/lestaches.txt show
+```
+
 ### Afficher les tâche
 Affiche la liste des tâches du fichier en les triant par leurs identifiants
+```bash 
+python src/main.py tests/lestaches.txt rm <ID>
+```
 
 
 
 
-### Tests
-
-Pour ajouter une tache: python src/main.py lestaches.txt add --description <DESCRIPTION> --project <NOM PROJET>
-Pour modifier une tache: python src/main.py lestaches.txt modify id <ID> --description <NEW DESCRIPTION> --project <NEW PROJECT NAME>
