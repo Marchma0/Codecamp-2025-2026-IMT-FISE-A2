@@ -30,7 +30,7 @@ def main():
     # Commande modify
     parser_modify = subparsers.add_parser("modify", help="Modifier une tâche existante")
     parser_modify.add_argument("id", type=int, help="Identifiant de la tâche")
-    parser_modify.add_argument("description", nargs="+", help="Nouvelle description")
+    parser_modify.add_argument("--description", nargs="+", help="Nouvelle description", default=None)
     parser_modify.add_argument("--project", help="Nouveau projet (optionnel)", default=None)
 
     # Commande rm
