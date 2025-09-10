@@ -6,6 +6,9 @@ L'objectif est de développer, en groupe, un logiciel de gestion de tâches simp
 
 L’utilisateur peut ajouter, modifier, supprimer et afficher des tâches sauvegardées dans un fichier texte.
 
+
+##lien live share 
+https://prod.liveshare.vsengsaas.visualstudio.com/join?6CA9E55E0BE52198A41B41BB0AD801E4D963
 ---
 
 ## Règles du projet
