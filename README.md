@@ -22,13 +22,10 @@ L’utilisateur peut ajouter, modifier, supprimer et afficher des tâches sauveg
 Le programme `task` permet les actions suivantes :
 
 ### Ajouter une tâche
-\# à compléter ....
-
+Ajoute au fichier lestaches.txt la ligne de la tâche, retourne son identifiant
 ### Modifier une tâche 
-\# à compléter ....
-
+Remplace la description de la tâche d’identifiant id dans lestaches.txt, renvoie un message d’erreur si la tâche n’est pas trouvée
 ### Supprimer une tâche
-\# à compléter ....
-
+Retire la ligne du fichier lestaches.txt contenant la tâche d’identifiant id, renvoie un message d’erreur si la tâche n’est pas trouvée
 ### Afficher les tâche
-\# à compléter ....
+Affiche la liste des tâches du fichier en les triant par leurs identifiants
