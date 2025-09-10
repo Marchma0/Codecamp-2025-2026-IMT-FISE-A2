@@ -44,9 +44,9 @@ def modify_task(filename, task_id, new_description):
             line = line.strip()
             if not line:
                 continue
-            parts = line.split(";", 1)  
+            parts = line.split("  ", 1)  
             if parts[0] == str(task_id):
-                lines.append(f"{task_id};{new_description}\n")
+                lines.append(f"{task_id}  {new_description}\n")
                 modified = True
             else:
                 lines.append(line + "\n")
@@ -73,7 +73,7 @@ def show_tasks(filename):
         toShow += f"+{'':-^17}+{'':-^52}+\n"
         for line in file:
             line = line.strip()
-            line_id,content  = line.split("\t", 1)
+            line_id,content  = line.split("  ", 1)
             if len(content) <= 50 :
                 toShow += f"|{line_id:^16} | {content:^50} |\n"
             else : 
@@ -91,7 +91,7 @@ def show_tasks(filename):
     return toShow
 
 
-def remove_task(id, filename):
+def remove_task(filename, id):
     """
     int x str -> bool
     Supprime une tâche d'un fichier texte en fonction de son identifiant.
@@ -99,7 +99,7 @@ def remove_task(id, filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
         for l in lines:
-            if l.strip().split('    ')[0] == str(id):
+            if l.strip().split('  ')[0] == str(id):
                 lines.remove(l)
                 with open(filename, 'w') as file:
                     file.writelines(lines)
