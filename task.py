@@ -3,6 +3,12 @@ import sys
 
 
 def add_task(filename, description):
+    """
+    str x str -> int
+    Ajoute une nouvelle tâche à un fichier texte.
+    Cette fonction prend en entrée le nom d'un fichier et la description d'une tâche, puis ajoute la tâche au fichier avec un identifiant unique généré à partir de la description. 
+    Si le fichier n'existe pas, il est créé. La fonction affiche la tâche ajoutée et l'identifiant généré, puis retourne cet identifiant.
+    """
     print(f"Tâche ajoutée : {description} (dans {filename})")
     try:
         with open(filename, 'r') as f:
@@ -26,6 +32,10 @@ def add_task(filename, description):
 
 
 def modify_task(filename, task_id, new_description):
+    """
+    str x int x str -> bool
+    Modifie la description d'une tâche existante dans un fichier texte.
+    """
     modified = False
     lines = []
 
@@ -51,14 +61,11 @@ def modify_task(filename, task_id, new_description):
         return False
        
 
-def remove_task(filename, task_id):
-    print(f"Tâche {task_id} supprimée (dans {filename})")
-    # à compléter
 
 def show_tasks(filename):
-    """ montre la liste des taches a effectuer avec leurs id
-    input : File path (str)
-    output : liste des taches 
+    """ 
+    str -> str
+    Affiche la liste des taches avec leur id dans un tableau.
     """
     print(f"Affichage des tâches contenues dans {filename}")
     toShow = ""
@@ -84,7 +91,11 @@ def show_tasks(filename):
     return toShow
 
 
-def delete (id: int, filename) -> str:
+def remove_task(id, filename):
+    """
+    int x str -> bool
+    Supprime une tâche d'un fichier texte en fonction de son identifiant.
+    """
     with open(filename, 'r') as file:
         lines = file.readlines()
         for l in lines:
@@ -93,7 +104,7 @@ def delete (id: int, filename) -> str:
                 with open(filename, 'w') as file:
                     file.writelines(lines)
                 print ("Deleted")
-                break
+                return True
         else:
             print ("Not found")
             
@@ -107,7 +118,7 @@ def delete (id: int, filename) -> str:
 
 def main():
     """
-        Configuration du parser d'arguments 
+    Configuration du parser d'arguments 
     """
 
     parser = argparse.ArgumentParser(
