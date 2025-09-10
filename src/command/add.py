@@ -14,7 +14,7 @@ def add_task(filename, description, project = "no project"):
         lines = []
 
 
-    new_id = int(id(description))
+    new_id = int(id(description)) % 1000000
 
     with open(filename, 'a') as f:
         f.write(f"{new_id}---{description}---{project}\n")

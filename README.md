@@ -32,3 +32,11 @@ Remplace la description de la tâche d’identifiant id dans lestaches.txt, renv
 Retire la ligne du fichier lestaches.txt contenant la tâche d’identifiant id, renvoie un message d’erreur si la tâche n’est pas trouvée
 ### Afficher les tâche
 Affiche la liste des tâches du fichier en les triant par leurs identifiants
+
+
+
+
+### Tests
+
+Pour ajouter une tache: python src/main.py lestaches.txt add --description <DESCRIPTION> --project <NOM PROJET>
+Pour modifier une tache: python src/main.py lestaches.txt modify id <ID> --description <NEW DESCRIPTION> --project <NEW PROJECT NAME>

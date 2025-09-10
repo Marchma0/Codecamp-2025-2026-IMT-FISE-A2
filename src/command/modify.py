@@ -1,6 +1,6 @@
 
 
-def modify_task(filename, task_id, new_description,new_project=None):
+def modify_task(filename, task_id, new_description = None,new_project=None):
     """
     str x int x str -> bool
     Modifie la description d'une tâche existante dans un fichier texte.
@@ -15,10 +15,7 @@ def modify_task(filename, task_id, new_description,new_project=None):
                 continue
             parts = line.split("---", 2)  
             if parts[0] == str(task_id):
-                if new_project is None:
-                    lines.append(f"{task_id}---{new_description}---{parts[2]}\n")
-                else :
-                    lines.append(f"{task_id}---{new_description}---{new_project}\n")
+                lines.append(f"{task_id}---{new_description if new_description else parts[1] }---{new_project if new_project else parts[2]}\n")
                 modified = True
             else:
                 lines.append(line + "\n")

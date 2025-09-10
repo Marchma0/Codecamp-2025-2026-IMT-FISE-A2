@@ -23,15 +23,15 @@ def main():
 
     # Commande add
     parser_add = subparsers.add_parser("add", help="Ajouter une nouvelle tâche")
-    parser_add.add_argument("description", nargs="+", help="Description de la tâche")
-    parser_add.add_argument("--projet", default=None, help="Nom du projet")
+    parser_add.add_argument("--description","-d", nargs="+", help="Description de la tâche")
+    parser_add.add_argument("--project","-p" ,default=None, help="Nom du projet")
 
 
     # Commande modify
     parser_modify = subparsers.add_parser("modify", help="Modifier une tâche existante")
     parser_modify.add_argument("id", type=int, help="Identifiant de la tâche")
-    parser_modify.add_argument("--description", nargs="+", help="Nouvelle description", default=None)
-    parser_modify.add_argument("--project", help="Nouveau projet (optionnel)", default=None)
+    parser_modify.add_argument("--description","-d", nargs="+", help="Nouvelle description (optionnel)", default=None)
+    parser_modify.add_argument("--project","-p" ,help="Nouveau projet (optionnel)", default=None)
 
     # Commande rm
     parser_rm = subparsers.add_parser("rm", help="Supprimer une tâche")
@@ -45,9 +45,9 @@ def main():
     # Parser final
     if args.command == "add":
         description = " ".join(args.description)
-        if args.projet :
-            projet = "".join(args.projet)
-            add_task(args.filename, description, projet)
+        if args.project :
+            project = "".join(args.project)
+            add_task(args.filename, description, project)
         else: 
             add_task(args.filename, description)
 
