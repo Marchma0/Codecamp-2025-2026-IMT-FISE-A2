@@ -1,4 +1,3 @@
-from datetime import date
 
 def modify_task(filename, task_id, new_description = None,new_project=None,new_due_date=None):
     """
@@ -7,7 +6,6 @@ def modify_task(filename, task_id, new_description = None,new_project=None,new_d
     """
     modified = False
     lines = []
-    done = str(date.today()) 
 
     with open(filename, "r", encoding="utf-8") as f:
         for line in f:

@@ -66,7 +66,7 @@ def sort_date(filename):
     
 
 
-""" #Test
+""" #Tests
 assert isDate("10/12/2024")
 assert isDate("29/02/2024")
 

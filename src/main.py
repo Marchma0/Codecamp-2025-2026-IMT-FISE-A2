@@ -36,7 +36,6 @@ def main():
     parser_modify.add_argument("--description","-d", nargs="+", help="Nouvelle description (optionnel)", default=None)
     parser_modify.add_argument("--project","-p" ,help="Nouveau projet (optionnel)", default=None)
     parser_modify.add_argument("--due", help="Nouvelle échéance (DD/MM/YYYY)", default=None)
-    parser_modify.add_argument("--done", action="store_true", help="Marquer comme réalisée", default=None)
 
     # Commande rm
     parser_rm = subparsers.add_parser("rm", help="Supprimer une tâche")
