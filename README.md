@@ -36,7 +36,7 @@ python src/main.py tests/lestaches.txt modify <ID> --description <NEW DESCRIPTIO
 ### Supprimer une tâche
 Retire la ligne du fichier lestaches.txt contenant la tâche d’identifiant id, renvoie un message d’erreur si la tâche n’est pas trouvée
 ```bash 
-python src/main.py tests/lestaches.txt show
+python src/main.py tests/lestaches.txt r
 ```
 
 ### Afficher les tâche
