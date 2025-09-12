@@ -5,7 +5,7 @@ from command.add import add_task
 from command.modify import modify_task
 from command.show import show_tasks
 from command.realized import realized
-#from command.search import search
+from command.search import search
 
 def main():
     """
@@ -52,10 +52,10 @@ def main():
 
     # Commande search
     parser_search = subparsers.add_parser("search", help="Chercher une/des tâche(s) par mot-clé")
-    parser_search.add_argument("--projet", type=int, help="Identifiant de la tâche", default=None)
-    parser_search.add_argument("--description", nargs=1, help="Date de réalisation (DD/MM/YYYY)", default=None)
-    parser_search.add_argument("--de", nargs=1, help="Recherche par date d'échéance (avant/après)", default=None)
-    parser_search.add_argument("--dr", nargs=1, help="Recherche par date de réalisation", default=None)
+    parser_search.add_argument("--projet", type=int, help="Identifiant de la tâche", default="")
+    parser_search.add_argument("--description", nargs=1, help="Date de réalisation (DD/MM/YYYY)", default="")
+    parser_search.add_argument("--before", nargs=1, help="Recherche par date avant", default="")
+    parser_search.add_argument("--after", nargs=1, help="Recherche par date après", default="")
 
 
 
@@ -97,8 +97,15 @@ def main():
                  date=date
                 )
     
-    #elif args.command == "search":
-        #search(args.filename, args.projet, args.description, args.de, args.dr)
+    elif args.command == "search":
+        search(filename=args.filename, 
+               keyword=args.description,
+               project=args.projet, 
+               #isRealized=,
+               #isNotRealized=,
+               before=arg.before,
+               after=arg.after
+               )
 
 if __name__ == "__main__":
     main()
