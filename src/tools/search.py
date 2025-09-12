@@ -2,7 +2,7 @@ from tools.date import compareDate
 from src.command.show import display
 
 
-def avant_date(line_list,date):
+def search_before(line_list,date):
     """
     input : 
     line_list : la liste des lignes du fichier text (int)
@@ -18,7 +18,7 @@ def avant_date(line_list,date):
             lines_avant.append(line)
     return lines_avant
 
-def avant_date(line_list,date):
+def search_after(line_list,date):
     lines_avant = []
     for line in line_list : 
         line = line.strip()
@@ -56,11 +56,11 @@ def search(filename,
         if isRealized :
             lines = search_realized(lines,isRealized)
         if isNotRealized : 
-            lines = search_realized(lines,isNotRealized)
+            lines = search_not_realized(lines,isNotRealized)
         if before : 
-            lines = search_realized(lines,before)
+            lines = search_before(lines,before)
         if after : 
-            lines = search_realized(lines,after)
+            lines = search_after(lines,after)
         display(lines)
         
         
