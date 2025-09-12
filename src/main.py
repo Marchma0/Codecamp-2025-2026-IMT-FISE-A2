@@ -5,7 +5,7 @@ from command.add import add_task
 from command.modify import modify_task
 from command.show import show_tasks
 from command.realized import realized
-
+#from command.search import search
 
 def main():
     """
@@ -26,15 +26,15 @@ def main():
     # Commande add
     parser_add = subparsers.add_parser("add", help="Ajouter une nouvelle tâche")
     parser_add.add_argument("--description","-d", nargs="+", help="Description de la tâche")
-    parser_add.add_argument("--project","-p" ,default=None, help="Nom du projet")
-    parser_add.add_argument("--done_on",nargs="+",help="date_realisation")
+    parser_add.add_argument("--project","-p" ,default="no project", help="Nom du projet")
+    parser_add.add_argument("--done_on",default="TBD",help="date_realisation")
     
 
     # Commande modify
     parser_modify = subparsers.add_parser("modify", help="Modifier une tâche existante")
     parser_modify.add_argument("id", type=int, help="Identifiant de la tâche")
-    parser_modify.add_argument("--description","-d", nargs="+", help="Nouvelle description (optionnel)", default=None)
-    parser_modify.add_argument("--project","-p" ,help="Nouveau projet (optionnel)", default=None)
+    parser_modify.add_argument("--description","-d", nargs="+", help="Nouvelle description (optionnel)", default="")
+    parser_modify.add_argument("--project","-p" ,help="Nouveau projet (optionnel)", default="")
     parser_modify.add_argument("--due", help="Nouvelle échéance (DD/MM/YYYY)", default=None)
 
     # Commande rm
@@ -50,32 +50,55 @@ def main():
     parser_realized.add_argument("id", type=int, help="Identifiant de la tâche")
     parser_realized.add_argument("--date", nargs=1, help="Date de réalisation (DD/MM/YYYY)", required=True)
 
+    # Commande search
+    parser_search = subparsers.add_parser("search", help="Chercher une/des tâche(s) par mot-clé")
+    parser_search.add_argument("--projet", type=int, help="Identifiant de la tâche", default=None)
+    parser_search.add_argument("--description", nargs=1, help="Date de réalisation (DD/MM/YYYY)", default=None)
+    parser_search.add_argument("--de", nargs=1, help="Recherche par date d'échéance (avant/après)", default=None)
+    parser_search.add_argument("--dr", nargs=1, help="Recherche par date de réalisation", default=None)
+
+
+
     args = parser.parse_args()
 
     # Parser final
     if args.command == "add":
         description = " ".join(args.description)
-        if args.project :
-            project = "".join(args.project)
-            add_task(args.filename, description, project)
-        else: 
-            add_task(args.filename, description)
+        project = "".join(args.project)
+        add_task(filename=args.filename,
+                description=description, 
+                project=project,
+                date_realisation=args.done_on
+                )
+
     elif args.command == "modify":
-        if args.description:
-            description = " ".join(args.description)
-            modify_task (args.filename, args.id, description,new_project=args.project,new_due_date=args.due)
-        else:
-            modify_task (args.filename, args.id,new_project=args.project,new_due_date=args.due)
+
+        description  = " ".join(args.description)
+        modify_task(filename=args.filename, 
+                    id=args.id, 
+                    new_description=description,
+                    new_project=args.project,
+                    new_due_date=args.due
+                    )
+                    
     elif args.command == "rm":
-        remove_task(args.filename, args.id)
+        remove_task(filename=args.filename, 
+                    id=args.id
+                    )
 
     elif args.command == "show":
-        print(args.sorted)
-        show_tasks(args.filename, args.sorted)
+        show_tasks(filename=args.filename, 
+                   sorted=args.sorted)
     
     elif args.command == "realized":
         date = "".join(args.date)
-        realized(args.filename,args.id,date)
+        realized(filename=args.filename,
+                 id=args.id,
+                 date=date
+                )
+    
+    #elif args.command == "search":
+        #search(args.filename, args.projet, args.description, args.de, args.dr)
 
 if __name__ == "__main__":
     main()
