@@ -28,8 +28,14 @@ def search_after(line_list,date):
     return lines_avant
             
         
-def search_task():
-    ...
+def search_task(lines,keyword):
+    results = []
+    for line in lines:
+        if keyword.lower() in line.split("---")[1].lower():
+            results.append(line)
+    if len(results) == 0:
+            print("No results found.")
+    return(results)
 
 def search_project(lines, project_name):
     tasks = []
