@@ -98,7 +98,7 @@ python src/main.py realized tests/lestaches.txt <ID> --date <JJ/MM/AAAA>
 ```
 ###  Recherche (ALL PARAMETERS ARE OPTIONAL)
 ```bash
-python src/main.py search --projet <NOM PROJET> --description <NOM TASK> --before <DATE ECHEANCE> --after <DATE ECHEANCE>
+python src/main.py search --projet <NOM PROJET> --description <NOM TASK> --before <DATE ECHEANCE> --after <DATE ECHEANCE> --isRealized <0 or 1>
 
 ```
 ### Afficher les tâche
