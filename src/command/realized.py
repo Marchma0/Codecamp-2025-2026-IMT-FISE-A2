@@ -1,5 +1,5 @@
 
-
+from tools.date import isDate
 
 
 def realized(filename,ID,date) -> bool:
@@ -11,6 +11,12 @@ def realized(filename,ID,date) -> bool:
     Output :
     bool : True si la tâche a été marquée comme réalisée, False sinon
     """
+
+    if not isDate(date):
+        print("Erreur : la date doit être au format JJ/MM/AAAA.")
+        return False
+    
+
     modified = False
     lines = []
 

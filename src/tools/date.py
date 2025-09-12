@@ -61,7 +61,7 @@ def sort_date(filename):
     """
     with open(filename, 'r') as file:
         lines = file.readlines()
-        lines.sort(key=lambda line: line.split('---')[3],cmp=compareDate)  # Trier par la date d'échéance (4ème élément)
+        lines.sorted(key=lambda line: line.split('---')[3])  # Trier par la date d'échéance (4ème élément)
     return lines
     
 

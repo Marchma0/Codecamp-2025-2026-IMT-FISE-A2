@@ -61,10 +61,11 @@ def main():
         else: 
             add_task(args.filename, description)
     elif args.command == "modify":
-
-        description  = " ".join(args.description)
-        modify_task (args.filename, args.id, description,new_project=args.project,new_due_date=args.due)
-                    
+        if args.description:
+            description = " ".join(args.description)
+            modify_task (args.filename, args.id, description,new_project=args.project,new_due_date=args.due)
+        else:
+            modify_task (args.filename, args.id,new_project=args.project,new_due_date=args.due)
     elif args.command == "rm":
         remove_task(args.filename, args.id)
 
