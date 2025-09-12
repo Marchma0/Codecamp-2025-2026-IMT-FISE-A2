@@ -56,8 +56,7 @@ def main():
     parser_search.add_argument("--description", nargs=1, help="Date de réalisation (DD/MM/YYYY)", default="")
     parser_search.add_argument("--before", nargs=1, help="Recherche par date avant", default="")
     parser_search.add_argument("--after", nargs=1, help="Recherche par date après", default="")
-    parser_search.add_argument("--isRealized", type=bool, nargs=1, help="Recherche des tâches réalisées", default = False)
-    parser_search.add_argument("--isNotRealized", type=bool,nargs=1, help="Recherche des tâches non réalisées", default= False)
+    parser_search.add_argument("--isRealized", type=int, nargs=1, help="Recherche des tâches réalisées", default = 0)
 
 
 
@@ -104,7 +103,6 @@ def main():
                keyword=args.description,
                project=args.projet, 
                isRealized= args.isRealized,
-               isNotRealized= args.isNotRealized,
                before=args.before,
                after=args.after
                )

@@ -11,14 +11,11 @@ def search(filename,
            after=None):
     with open(filename,"r") as f:
         lines = f.readline()
+        lines = isRealized(lines,isRealized)
         if keyword :
             lines = search_task(lines,keyword)
         if project :
             lines = search_project(lines,project)
-        if isRealized :
-            lines = search_realized(lines,isRealized)
-        if isNotRealized : 
-            lines = search_not_realized(lines,isNotRealized)
         if before : 
             lines = search_before(lines,before)
         if after : 
