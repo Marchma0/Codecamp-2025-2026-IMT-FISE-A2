@@ -17,7 +17,7 @@ def isDate(date):
         print(msg)
         return False
 
-    if month>12 or month<0:
+    if month>12 or month<1:
         print(msg)
         return False
     
@@ -26,7 +26,7 @@ def isDate(date):
     if (year%4==0):
         daypermonth= [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
-    if day > daypermonth[month-1] or day < 0:
+    if day > daypermonth[month-1] or day < 1:
         print(msg)
         return False
     
