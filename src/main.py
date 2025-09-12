@@ -52,7 +52,7 @@ def main():
 
     # Commande search
     parser_search = subparsers.add_parser("search", help="Chercher une/des tâche(s) par mot-clé")
-    parser_search.add_argument("--projet", type=int, help="Identifiant de la tâche", default="")
+    parser_search.add_argument("--projet", help="Recherche par nom de projet", default="")
     parser_search.add_argument("--description", nargs=1, help="Date de réalisation (DD/MM/YYYY)", default="")
     parser_search.add_argument("--before", nargs=1, help="Recherche par date avant", default="")
     parser_search.add_argument("--after", nargs=1, help="Recherche par date après", default="")

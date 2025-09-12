@@ -3,9 +3,5 @@
 38592---okfkrjfjekfjefée---loojojodjfdfodjfd---12/12/1111---TBD
 866176---okfkrjfjekfjefée---loojojodjfdfodjfd---12/12/1209---01/01/1000
 473728---okfkrjfjekfjefée---loojojodjfdfodjfd---12/12/1908---TBD
-<<<<<<< HEAD
-483504---mdr---no project---24/03/2025---TBD
-=======
 212720---tfdfa---projet15---01/01/2000---15/12/2000
 713584---tfdfa5---no project---01/01/1899---TBD
->>>>>>> 289f4edc24f6838f4d513cca10cf88841d3532b5

@@ -54,11 +54,19 @@ def search_project(lines, project_name):
 
     return tasks
 
-def search_realized():
-    ...
+def search_realized(lines):
+    results = []
+    for line in lines:
+        if not "TBD".lower() in line.split("---")[4].lower():
+            results.append(line)
+    return results
 
-def search_not_realized():
-    ...
+def search_not_realized(lines):
+    results = []
+    for line in lines:
+        if "TBD".lower() in line.split("---")[4].lower():
+            results.append(line)
+    return results
 
 def search(filename,
            keyword=None,
