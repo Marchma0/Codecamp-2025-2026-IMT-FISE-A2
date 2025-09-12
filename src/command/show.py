@@ -2,7 +2,7 @@
 from tools.date import sort_date
 
 
-def show_tasks(filename,sorted=False):
+def show_tasks(filename):
     """ 
     str -> str
     Affiche la liste des taches avec leur id dans un tableau.
@@ -11,15 +11,17 @@ def show_tasks(filename,sorted=False):
     toShow = ""
     lines = []
     with open(filename, 'r') as file:
-        if sorted :
-            lines = sort_date(filename)
-        else :
-            lines = file.readlines()
+        lines = file.readlines()
     
+    return display(lines)
+
+
+
+def display(lineList):
     toShow += f"+{'':-^17}+{'':-^52}+{'':-^32}+{'':-^17}+{'':-^17}+\n"
-    toShow += f"|{'ID':^16} | {'Description':^50} | {'Projet':^30} | {'Echeance':^15} | {'Realisation':^15}\n"
+    toShow += f"|{'ID':^16} | {'Description':^50} | {'Projet':^30} | {'Echeance':^15} | {'Realisation':^15} |\n"
     toShow += f"+{'':-^17}+{'':-^52}+{'':-^32}+{'':-^17}+{'':-^17}+\n"
-    for line in lines:
+    for line in lineList:
         line = line.strip()
         line_id,content,project,echeance,realized  = line.split("---", 4)
         if not project : 
@@ -39,3 +41,4 @@ def show_tasks(filename,sorted=False):
         toShow += f"+{'':-^17}+{'':-^52}+{'':-^32}+{'':-^17}+{'':-^17}+\n"
     print(toShow)
     return toShow
+    
