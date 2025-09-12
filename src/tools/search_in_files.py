@@ -65,3 +65,30 @@ def search_not_realized(lines):
         if "TBD".lower() in line.split("---")[4].lower():
             results.append(line)
     return results
+
+
+
+
+def search_realized(lines, realized_date):
+    """
+    Recherche les tâches ayant une date de réalisé spécifique
+    """
+    found = False
+    results= []
+    
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split("---")
+        if len(parts) < 5:
+            continue
+        realized = parts[4]
+
+        if realized == realized_date:
+            results.append(line)
+            return results
+            
+    
+    if not found:
+        print(f"Aucune tâche trouvée avec la date réalisation {realized_date}")
