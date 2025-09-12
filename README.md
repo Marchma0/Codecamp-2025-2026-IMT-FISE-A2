@@ -93,6 +93,13 @@ python src/main.py tests/lestaches.txt rm <ID>
 ###  Marquer une tache commme accomplie 
 ```bash 
 python src/main.py realized tests/lestaches.txt <ID> --date <JJ/MM/AAAA>
+
+
+```
+###  Recherche (ALL PARAMETERS ARE OPTIONAL)
+```bash
+python src/main.py search --projet <NOM PROJET> --description <NOM TASK> --before <DATE ECHEANCE> --after <DATE ECHEANCE>
+
 ```
 ### Afficher les tâche
 Affiche la liste des tâches du fichier en les triant par leurs identifiants
