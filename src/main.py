@@ -99,10 +99,11 @@ def main():
                 )
     
     elif args.command == "search":
+        description = "".join(args.description)
         search(filename=args.filename, 
-               keyword=args.description,
+               keyword=description,
                project=args.projet, 
-               isRealized= args.isRealized,
+               is_realized= args.isRealized,
                before=args.before,
                after=args.after
                )

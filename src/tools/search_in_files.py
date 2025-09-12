@@ -28,6 +28,7 @@ def search_after(line_list,date):
         
 def search_task(lines,keyword):
     results = []
+    print(keyword)
     for line in lines:
         if keyword.lower() in line.split("---")[1].lower():
             results.append(line)
@@ -44,7 +45,7 @@ def search_project(lines, project_name):
             project = parts[2].strip()
 
             if project_name in project:
-                tasks.append(description)
+                tasks.append(line)
     if tasks:
         print("Tâches trouvées :", tasks)
     else:

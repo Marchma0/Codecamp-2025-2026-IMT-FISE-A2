@@ -8,7 +8,6 @@ def show_tasks(filename):
     Affiche la liste des taches avec leur id dans un tableau.
     """
     print(f"Affichage des tâches contenues dans {filename}")
-    toShow = ""
     lines = []
     with open(filename, 'r') as file:
         lines = file.readlines()
@@ -18,11 +17,14 @@ def show_tasks(filename):
 
 
 def display(lineList):
+    
+    toShow = ""
     toShow += f"+{'':-^17}+{'':-^52}+{'':-^32}+{'':-^17}+{'':-^17}+\n"
     toShow += f"|{'ID':^16} | {'Description':^50} | {'Projet':^30} | {'Echeance':^15} | {'Realisation':^15} |\n"
     toShow += f"+{'':-^17}+{'':-^52}+{'':-^32}+{'':-^17}+{'':-^17}+\n"
     for line in lineList:
         line = line.strip()
+        print(line)
         line_id,content,project,echeance,realized  = line.split("---", 4)
         if not project : 
             project = "no project"
