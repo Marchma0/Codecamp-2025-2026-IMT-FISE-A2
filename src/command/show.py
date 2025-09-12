@@ -41,4 +41,5 @@ def display(lineList):
         toShow += f"+{'':-^17}+{'':-^52}+{'':-^32}+{'':-^17}+{'':-^17}+\n"
     print(toShow)
     return toShow
-    
+
+
