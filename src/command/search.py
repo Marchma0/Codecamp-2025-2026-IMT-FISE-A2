@@ -31,8 +31,22 @@ def search_after(line_list,date):
 def search_task():
     ...
 
-def search_project():
-    ...
+def search_project(lines, project_name):
+    tasks = []
+    for line in lines:
+        parts = line.split('---')
+        if len(parts) >= 3:
+            description = parts[1].strip()
+            project = parts[2].strip()
+
+            if project_name in project:
+                tasks.append(description)
+    if tasks:
+        print("Tâches trouvées :", tasks)
+    else:
+        print("Aucun projet trouvé :", project_name)
+
+    return tasks
 
 def search_realized():
     ...
