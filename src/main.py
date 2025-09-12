@@ -103,8 +103,8 @@ def main():
                project=args.projet, 
                #isRealized=,
                #isNotRealized=,
-               before=arg.before,
-               after=arg.after
+               before=args.before,
+               after=args.after
                )
 
 if __name__ == "__main__":
