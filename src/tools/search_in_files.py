@@ -1,3 +1,5 @@
+from tools.date import compareDate
+
 def search_before(line_list,date):
     """
     input : 
