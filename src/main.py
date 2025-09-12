@@ -101,8 +101,8 @@ def main():
         search(filename=args.filename, 
                keyword=args.description,
                project=args.projet, 
-               #isRealized=,
-               #isNotRealized=,
+               isRealized= args.isRealized,
+               isNotRealized= args.isNotRealized,
                before=args.before,
                after=args.after
                )
